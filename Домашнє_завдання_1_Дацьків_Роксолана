@@ -1,0 +1,34 @@
+#ЗАВДАННЯ ПЕРШЕ
+
+from datetime import datetime
+
+def get_days_from_today(date):
+    current_date = datetime.now().date()
+    if date < current_date:
+        days = (current_date - date).days
+        return days
+    else:
+        return "Невірна дата"
+
+# Вводимо дату
+input_date = datetime(2024, 4, 1).date()
+result = get_days_from_today(input_date)
+print("Кількість днів між заданою датою і поточною датою:", result)
+
+
+
+#ЗАВАДАННЯ ДРУГЕ
+
+import random
+
+def get_numbers_ticket(min, max, quantity):
+    if not (1 <= min <= max <= 1000) or not (1 <= quantity <= max - min + 1):
+        return[]   #тут я перевірила вхидні дані
+    numbers = set()
+    while len(numbers) < quantity:
+        numbers.add(random.randint(min, max))  #використала множину рандом, попередньо імпортувавши її
+    return sorted(list(numbers))   #повертаю відсортовані числа
+lottery_numbers = get_numbers_ticket(1, 49, 6)
+print('Ваші лотерейні числа:', lottery_numbers)
+
+
